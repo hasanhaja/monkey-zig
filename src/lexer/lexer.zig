@@ -1,6 +1,6 @@
-const string = @import("../util.zig").string;
+const util = @import("../util.zig");
+const string = util.string;
 const token = @import("../token/token.zig");
-const std = @import("std");
 
 pub const Lexer = struct {
   input: string,
@@ -91,9 +91,6 @@ pub const Lexer = struct {
     
     self.read_char();
 
-    std.debug.print("Before return: {any}\n", .{tok.literal});
-    defer std.debug.print("After return: {any}\n", .{tok.literal});
-
     return tok;
   }
 
@@ -128,6 +125,5 @@ fn is_letter(ch: u8) bool {
 }
 
 fn new_token(token_type: token.TokenType, ch: u8) token.Token {
-  const literal = [_]u8{ ch };
-  return token.Token{ .token_type = token_type, .literal = &literal};
+  return token.Token{ .token_type = token_type, .literal = util.charToString(ch)};
 }
