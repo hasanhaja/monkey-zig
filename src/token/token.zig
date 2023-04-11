@@ -1,25 +1,25 @@
 const std = @import("std");
-const string = @import("../util.zig").string;
+const string = @import("util").string;
 
 pub const TokenType = string;
 
 pub const keywords = std.ComptimeStringMap(TokenType, .{
-  .{ "fn", FUNCTION },
-  .{ "let", LET },
-  .{ "true", TRUE },
-  .{ "false", FALSE },
-  .{ "return", RETURN },
-  .{ "if", IF },
-  .{ "else", ELSE },
+    .{ "fn", FUNCTION },
+    .{ "let", LET },
+    .{ "true", TRUE },
+    .{ "false", FALSE },
+    .{ "return", RETURN },
+    .{ "if", IF },
+    .{ "else", ELSE },
 });
 
 pub const Token = struct {
-  token_type: TokenType,
-  literal: string,
+    token_type: TokenType,
+    literal: string,
 };
 
 pub fn lookup_ident(ident: string) TokenType {
-  return keywords.get(ident) orelse ident;
+    return keywords.get(ident) orelse ident;
 }
 
 pub const ILLEGAL = "ILLEGAL";

@@ -1,10 +1,10 @@
 const std = @import("std");
-const lexer = @import("./lexer/lexer.zig");
+const lexer = @import("lexer");
 
 pub fn main() !void {
-  var my_lexer = lexer.Lexer.init("}");
-  const test_token = my_lexer.next_token();
-  std.debug.print("next_token: {any}\n", .{test_token});
+    var my_lexer = lexer.Lexer.init("}");
+    const test_token = my_lexer.next_token();
+    std.debug.print("next_token: {any}\n", .{test_token});
 }
 
 test "simple test" {
