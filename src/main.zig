@@ -6,9 +6,9 @@ const Lexer = lexer.Lexer;
 const token = @import("./token/token.zig");
 
 pub fn main() !void {
-    var my_lexer = lexer.Lexer.init("}");
+    var my_lexer = lexer.Lexer.init("five");
     const test_token = my_lexer.next_token();
-    std.debug.print("next_token: {any}\n", .{test_token});
+    std.debug.print("type: {s}, literal: {s}\n", .{test_token.token_type, test_token.literal});
 }
 
 test "simple test" {
@@ -44,7 +44,7 @@ test "Test next token" {
 
     const tests = [_]token.Token{
         .{ .token_type = token.LET, .literal = "let" },
-        .{ .token_type = token.IDENT, .literal = "fives" },
+        .{ .token_type = token.IDENT, .literal = "five" },
         .{ .token_type = token.ASSIGN, .literal = "=" },
         .{ .token_type = token.INT, .literal = "5" },
         .{ .token_type = token.SEMICOLON, .literal = ";" },

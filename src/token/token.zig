@@ -19,7 +19,7 @@ pub const Token = struct {
 };
 
 pub fn lookup_ident(ident: string) TokenType {
-    return keywords.get(ident) orelse ident;
+    return keywords.get(ident) orelse IDENT;
 }
 
 pub const ILLEGAL = "ILLEGAL";
