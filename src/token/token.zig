@@ -1,5 +1,5 @@
 const std = @import("std");
-const string = @import("util").string;
+const string = @import("../util.zig").string;
 
 pub const TokenType = string;
 

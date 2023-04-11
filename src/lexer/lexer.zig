@@ -1,6 +1,6 @@
-const util = @import("util");
+const util = @import("../util.zig");
 const string = util.string;
-const token = @import("token");
+const token = @import("../token/token.zig");
 const std = @import("std");
 const expect = std.testing.expect;
 

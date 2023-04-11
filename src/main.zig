@@ -1,5 +1,5 @@
 const std = @import("std");
-const lexer = @import("lexer");
+const lexer = @import("./lexer/lexer.zig");
 
 pub fn main() !void {
     var my_lexer = lexer.Lexer.init("}");
