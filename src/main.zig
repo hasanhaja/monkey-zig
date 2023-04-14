@@ -4,11 +4,18 @@ const expectEqualStrings = std.testing.expectEqualStrings;
 const lexer = @import("./lexer/lexer.zig");
 const Lexer = lexer.Lexer;
 const token = @import("./token/token.zig");
+const Repl = @import("./repl/repl.zig").Repl;
 
 pub fn main() !void {
-    var my_lexer = lexer.Lexer.init("five");
-    const test_token = my_lexer.next_token();
-    std.debug.print("type: {s}, literal: {s}\n", .{test_token.token_type, test_token.literal});
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer _ = gpa.deinit();
+    const allocator = gpa.allocator();
+
+    const stdin = std.io.getStdIn();
+    const stdout = std.io.getStdOut();
+
+    var repl = Repl.init(allocator);
+    try repl.start(stdin, stdout);
 }
 
 test "simple test" {

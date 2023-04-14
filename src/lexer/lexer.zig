@@ -127,4 +127,3 @@ fn is_letter(ch: u8) bool {
 fn new_token(token_type: token.TokenType, ch: u8) token.Token {
     return token.Token{ .token_type = token_type, .literal = util.charToString(ch) };
 }
-
